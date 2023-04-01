@@ -1,0 +1,27 @@
+{% extends 'master.html' %}
+
+{%  block title %} Sign Up {% endblock %}
+
+{% block content %}
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="container text-center shadow pt-5 mt-5 mb-5" style="width:70%;">
+           {{form.as_p}}
+           <input type="submit" class="btn btn-outline-primary" value="login" style="width:100px;margin-bottom: 20px;"> 
+        </div>
+        
+    </form>
+
+     
+    
+    <!-- add into the database -->
+    
+    
+    <!-- <h4>Member Names</h4>
+    {% for i in members %}
+        <li>{{ i.firstname }}</li>
+    {% endfor %} -->
+    
+    
+{% endblock %}

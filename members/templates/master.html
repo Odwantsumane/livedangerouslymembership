@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+  
+<htm lang="en">
+
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+
+
+    </head>
+    <body>
+        <!-- My navbar  navbar-expand-sm-->
+        <nav class="navbar bg-dark navbar-dark" > 
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                    
+                </button>
+                <div class="collapse navbar-collapse show" id="collapsibleNavbar">
+                    <ul class="nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-lg dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#prof">
+                                Profile
+                            </a>
+                            <div id="prof" class="collapse card" style="width:310px">
+                                <div class="mx-auto d-flex">
+                                    <img class="card-img-top rounded-circle" src="{{ profilePic.url }}" alt="profile pic" style="width:130px; height:130px">
+                                     
+                                    <div class="card-body">
+                                        <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+                                        <p class="card-text"><a href="{{user.email}}">{{user.email}}</a></p>
+                                        <!-- <p><a class="btn btn-sm btn-secondary" href="#" style="text-decoration: none;">Your Cart</a></p> -->
+                                        <a href="/images/" class="btn btn-secondary">Update profile</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link link-light" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="/members/">Members</a></li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link link-light dropdown-toggle" data-bs-toggle="dropdown" href="#" >Products</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/campp/">Camping</a></li>
+                                     
+                                    <li><a class="dropdown-item" href="/hikp/">Hiking</a></li>
+                                     
+                                    <li><a class="dropdown-item" href="/skyp/">skydiving</a></li>
+                                     
+                                    <li><a class="dropdown-item" href="/canp/">Canoeing</a></li>
+                                    <li><hr class="dropdown-devider"></li>
+                                    <li><a class="dropdown-item" href="/products/">All</a></li>
+                                </ul>
+                            </div>
+                            
+                        </li>
+                        <li class="nav-item"><a class="nav-link link-light" href='/chat/'>Chat
+                            <span class="badge bg-danger">{{ usnms }}</span>
+                        </a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href='/gearup/'>Gear Up</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href='/cart/'>Cart
+                            <span class="badge bg-success">1</span>
+                        </a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href='/logout/'>Logout</a></li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-lg dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#prof">
+                                Profile
+                                <span class="badge bg-danger">1</span>
+                            </a>
+                            <div id="prof" class="collapse card" style="width:145px">
+                                <img class="card-img-top rounded-circle"  src="{{ profilePic.url }}" alt="Card image" style="width:100px; height:100px">
+                                <p><a href="/login_user/">Login</a></p>
+                                <!-- {{ profilePic.url }} -->
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link link-light" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="/products/">What we offer</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="/login_user/">Login</a></li>
+                        <li class="nav-item"><a class="nav-link link-light" href="/signup/">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="search..">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </form>
+                </div>
+            </div>
+        </nav>
+        
+
+        {% block content %}
+        {% endblock %}
+
+         
+    </body>
+</htm>
