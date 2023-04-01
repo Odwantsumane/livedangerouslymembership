@@ -1,0 +1,214 @@
+{% extends 'master.html' %}
+{% block content %}
+    
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseOne" >
+                    <h3>Camping</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a>
+                </div>
+                
+            </div>
+            <div id="collapseOne" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+                     
+                    {% if ImagesCam %}
+                            
+                            <ul >
+                                {% for i in ImagesCam %}
+                                    <li style="display:inline-flex">
+                                        <div class="card" style="width:302px">
+                                            <img src="{{ i.image.url }}" style="width:300px;height:300px; filter:brightness(50%)">
+                                            <div class="card-img-overlay">
+                                                 
+                                                <h4 class="card-title text-center pt-5" style="color: white;">{{ i.labels }}</h3>
+                                                <p class="card-text text-center" style="color: white;">{{ i.descrip }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if formcam %}
+                    <form method="POST" enctype="multipart/form-data">
+                        
+                        {% csrf_token %}
+                        {{formcam.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="camping/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseTwo" >
+                    <h3>Sky Diving</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a> 
+                </div>
+               
+            </div>
+            <div id="collapseTwo" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+
+                    {% if ImagesSky %}
+                            <ul>
+                                {% for i in ImagesSky %}
+                                <li style="display:inline-flex">
+                                    <div class="card" style="width:302px">
+                                        <img src="{{ i.image.url }}" style="width:300px;height:300px; filter:brightness(50%)">
+                                        <div class="card-img-overlay">
+                                             
+                                            <h4 class="card-title text-center pt-5" style="color: white;">Your own wings</h3>
+                                            <p class="card-text text-center" style="color: white;">Who said humans can't fly.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if formsky %}
+                    <form method="post" enctype="multipart/form-data">
+                         
+                        {% csrf_token %}
+                        {{formsky.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                     
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="skydiving/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseThree" >
+                    <h3>Hiking</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a> 
+                </div>
+               
+            </div>
+            <div id="collapseThree" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+                     
+                    {% if ImagesHki %}
+                            <ul>
+                                {% for i in ImagesHki %}
+                                <li style="display:inline-flex">
+                                    <div class="card" style="width:302px">
+                                        <img src="{{ i.image.url }}" style="width:300px;height:300px; filter:brightness(50%)">
+                                        <div class="card-img-overlay">
+                                             
+                                            <h4 class="card-title text-center pt-5" style="color: white;">Hiking is life</h3>
+                                            <p class="card-text text-center" style="color: white;">Common we got hills to conquer</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if formhki %}
+                    <form method="post" enctype="multipart/form-data">
+                         
+                        {% csrf_token %}
+                        {{formhki.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="hiking/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseFour" >
+                    <h3>Canoeing</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a> 
+                </div>
+               
+            </div>
+            <div id="collapseFour" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+                     
+                    {% if ImagesCan %}
+                            <ul>
+                                {% for i in ImagesCan %}
+                                <li style="display:inline-flex">
+                                    <div class="card" style="width:302px">
+                                        <img src="{{ i.image.url }}" style="width:300px;height:300px; filter:brightness(50%)">
+                                        <div class="card-img-overlay">
+                                             
+                                            <h4 class="card-title text-center pt-5" style="color: white;">Happy Canoeing</h3>
+                                            <p class="card-text text-center" style="color: white;">Come meet the fish</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if formcan %}
+                    <form method="post" enctype="multipart/form-data">
+                         
+                        {% csrf_token %}
+                        {{formcan.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                     
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="canoeing/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+         
+    </div>
+
+    <p class="text-center">We pride ourselves the best company ever</p>
+    <script type="text/javascript">
+        labelss = ["The Night", "Blooming Spring", "Autumn Beauty", "Creamy Winters", "Family"]
+        descr = ["Once with nature", "Green everywhere :>", "A beautiful mess", "So breath-taking you shiver", "All plus the experience"]
+        
+        //  I will just add in model the labels, and the text ,then update them manually which is a drag:<
+        
+    </script>
+{% endblock %}
+    
+ 

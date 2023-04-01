@@ -1,0 +1,109 @@
+{% extends 'master.html' %}
+{% block title %}
+    Cart
+{% endblock %}
+{% block content %}
+
+{% if img %}
+    
+    <div class="text-center">
+         <img src="{{ img.url }}" style="width:100px;height:100px;">
+    </div>
+    <a class="btn btn-outline-success" href="#" >Checkout</a>
+{% endif %}
+<div id="accordion">
+    <div class="card">
+        <div class="card-header">
+             
+            <a class="btn" data-bs-toggle="collapse" href="#collapseOne" >
+            <h5>Specs</h5>
+                 
+            </a>
+             
+            
+        </div>
+        <div id="collapseOne" class="collapse show">
+            <div class="card-body">
+                
+                 
+                <p>Some information about the products</p>
+                {% if form1 %}
+                <form method="POST" enctype="multipart/form-data">
+                    
+                    {% csrf_token %}
+                    {{form1.as_p}}
+                    <input type="submit">
+                </form>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <p class="text-center"><a class="btn btn-primary" href="campinggear/">add</a></p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+             
+            <a class="btn" data-bs-toggle="collapse" href="#collapseThree" >
+            <h5>Product History</h5>
+                 
+            </a> 
+             
+           
+        </div>
+        <div id="collapseThree" class="collapse show">
+            <div class="card-body">
+                <p>Some history information</p>
+                {% if form2 %}
+                <form method="post" enctype="multipart/form-data">
+                     
+                    {% csrf_token %}
+                    {{form2.as_p}}
+                    <input type="submit">
+                </form>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <p class="text-center"><a class="btn btn-primary" href="hikinggear/">add</a></p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+             
+            <a class="btn" data-bs-toggle="collapse" href="#collapseThree" >
+            <h5>Some info</h5>
+            </a> 
+             
+           
+        </div>
+        <div id="collapseThree" class="collapse show">
+            <div class="card-body">
+                <p>Some other information</p>
+                {% if form3 %}
+                <form method="post" enctype="multipart/form-data">
+                     
+                    {% csrf_token %}
+                    {{form3.as_p}}
+                    <input type="submit">
+                </form>
+                {% endif %}
+                 
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <p class="text-center"><a class="btn btn-primary" href="canoeinggear/">add</a></p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+     
+</div>
+{% endblock %}

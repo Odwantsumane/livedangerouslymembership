@@ -1,0 +1,102 @@
+{% extends 'master.html' %}
+{% block title %}
+    Our Products
+{% endblock %}
+{% block content %}
+    <a class="btn btn-outline-primary" href="/prods/">Click me</a>
+    {% if cam %}
+    <p class="text-center h3">Camping</p>
+              
+    {% if ImagesCam %}
+        {% for i in ImagesCam %}
+            <li style="display:inline-flex">
+                <div id="prof" class="card" style="width:310px">
+                     
+                    <img src="{{ i.image.url }}" style="width:300px;height:300px">
+                        
+                    <div class="card-body">
+                         
+                        <p class="h5">R 100.00 </p>
+                        <p class="float-end" style="color:red;"> <b>SALE</b></p>
+                        
+                        <a class="btn btn-outline-primary" href="#">Add To Cart</a>
+                    </div>  
+                </div>
+            </li>
+        {% endfor %}
+        <a class="btn btn-primary" href="#">More</a>
+    {% endif %}
+    {% endif %}
+
+    {% if hik %}
+    <p class="text-center h3">Hiking</p>
+
+    {% if ImagesHki %}
+        {% for i in ImagesHki %}
+            <li style="display:inline-flex">
+                <div id="prof" class="card" style="width:310px">
+                     
+                    <img src="{{ i.image.url }}" style="width:300px;height:300px">
+                        
+                    <div class="card-body">
+                         
+                        <p class="h5">R 100.00 </p>
+                        <p class="float-end" style="color:red;"> <b>SALE</b></p>
+                        
+                        <a class="btn btn-outline-primary" href="#">Add To Cart</a>
+                    </div>  
+                </div>
+            </li>
+        {% endfor %}
+        <a class="btn btn-primary" href="#">More</a>
+    {% endif %}
+    {% endif %}
+
+    {% if can %}
+    <p class="text-center h3">Canoeing</p>
+
+    {% if ImagesCan %}
+        {% for i in ImagesCan %}
+            <li style="display:inline-flex">
+                <div id="prof" class="card" style="width:310px">
+                     
+                    <img src="{{ i.image.url }}" style="width:300px;height:300px">
+                        
+                    <div class="card-body">
+                         
+                        <p class="h5">R 100.00 </p>
+                        <p class="float-end" style="color:red;"> <b>SALE</b></p>
+                        
+                        <a class="btn btn-outline-primary" href="#">Add To Cart</a>
+                    </div>  
+                </div>
+            </li>
+        {% endfor %}
+        <a class="btn btn-primary" href="#">More</a>
+    {% endif %}
+    {% endif %}
+
+    {% if sky %}
+    <p class="text-center h3">Sky diving</p>
+
+    {% if ImagesSky %}
+        {% for i in ImagesSky %}
+            <li style="display:inline-flex">
+                <div id="prof" class="card" style="width:310px">
+                     
+                    <img src="{{ i.image.url }}" style="width:300px;height:300px">
+                        
+                    <div class="card-body">
+                         
+                        <p class="h5">R 100.00 </p>
+                        <p class="float-end" style="color:red;"> <b>SALE</b></p>
+                        
+                        <a class="btn btn-outline-primary" href="#">Add To Cart</a>
+                    </div>  
+                </div>
+            </li>
+        {% endfor %}
+        <a class="btn btn-primary" href="#">More</a>
+    {% endif %}
+    {% endif %}
+{% endblock %}

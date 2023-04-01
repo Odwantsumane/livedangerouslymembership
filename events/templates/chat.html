@@ -1,0 +1,70 @@
+{% extends 'master.html' %}
+
+{% block content %}
+    {% if delete_success %}
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Success</strong>
+            Message deleted successfully 
+        </div>
+     
+    {% endif %}
+    {% if unauthorized_delete %}
+
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Unsuccessful</strong>
+            Cannot delete someone else's message 
+        </div>
+
+    {% endif %}
+
+    <div>
+        <div>
+            {% if messages %}
+                {% for x in messages %}
+
+                    <div class="container pt-5 my-5 shadow clearfix h-75">
+                        <div class="d-flex">
+                            {% if x.headImage %}
+                                <img class="card-img-top rounded-circle" src="{{ x.headImage.url }}" alt="profile pic" style="width:50px; height:50px">
+                            {% endif %}
+                        <h5 class="pt-2 ms-1">{{ x.author }}</h5> 
+                        </div>
+                        
+                        <p class="card-text pt-2">{{ x.message }}</p>
+                        
+                        <a href="{{ x.id }}" class="btn btn-outline-danger float-end">Delete</a>
+                        
+                        
+                        
+                        <!-- <span href="#" class="btn btn-outline-primary float-end">Delete</span> -->
+                        
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center">No Messages</p>
+            {% endif %}
+            
+        </div>
+        {% if form %}
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class=" container text-center pt-5 mt-5 mb-5" style="width:30%;">
+                    {% csrf_token %}
+                    {{form.as_p}} 
+                    
+                    <input type="submit" class="btn btn-outline-primary" value="Send" style="width:100px;margin-bottom: 10px;">
+                </div>
+                
+            </form>
+        {% else %}
+        <div class=" container text-center pt-5 mt-5 mb-5" style="width:30%;">
+            
+            <a href="/chat/" class="btn btn-outline-primary" style="width:130px;margin-bottom: 10px;">Back</a>
+        </div>
+         {% endif %}
+
+        
+    </div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'master.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{formsky.as_p}}
+        <input type="submit">
+
+    </form>
+{% endblock %}
+

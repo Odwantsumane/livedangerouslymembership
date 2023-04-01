@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% block content %}
+    <ul>
+        
+        {% if user.is_authenticated %}
+            <li><a href="/products/">What we offer</a></li>
+            <li><a href='/chat'>Chat</a></li>
+            <li><a href='/logout'>Logout</a></li>
+        {% else %}
+            <li><a href="/products/">What we offer</a></li>
+            <li><a href="login_user/">Login</a></li>
+            <li><a href="signup/">Sign Up</a></li>
+        {% endif %}
+        
+    </ul>
+
+    <p>We pride ourselves the best company ever</p>
+{% endblock %}

@@ -1,0 +1,241 @@
+{% extends 'master.html' %}
+{% block title %}
+    Gear Up
+{% endblock %}
+{% block content %}
+    <!-- <h2>Camping Gear</h2>  
+    <img src="">  
+      
+    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+    <a class="btn btn-secondary" href="campinggear/"></a>
+    {% if form1 %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form1.as_p}}
+        <input type="submit">
+
+    </form>
+    {% endif %}
+    
+    {% endif %}
+    {% endif %}
+    
+    <h2>Hiking Gear</h2>  
+    <img src="">
+     
+    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+    <a class="btn btn-secondary" href="hikinggear/"></a>
+    {% if form2 %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form2.as_p}}
+        <input type="submit">
+
+    </form>
+    {% endif %}
+    
+    {% endif %}
+    {% endif %}
+    
+    <h2>Canoeing Gear</h2>  
+        <img src="">
+        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <a class="btn btn-secondary" href="canoeinggear/"></a>
+        {% if form3 %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form3.as_p}}
+            <input type="submit">
+    
+        </form>
+        {% endif %}
+        
+        {% endif %}
+        {% endif %}
+       
+
+    <h2>Sky Diving Gear</h2> 
+    <img src="">
+     
+    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+    <a class="btn btn-secondary" href="skydivinggear/"></a>
+    {% if form4 %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form4.as_p}}
+        <input type="submit">
+
+    </form> 
+    {% endif %}
+    
+    {% endif %}
+    {% endif %} -->
+
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseOne" >
+                    <h3>Camping Gear</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a>
+                </div>
+                
+            </div>
+            <div id="collapseOne" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+                     
+                    {% if ImagesCam1 %}
+                            <ul >
+                                {% for i in ImagesCam1 %}
+                                    <li style="display:inline-flex"><img src="{{ i.image.url }}" style="width:300px;height:300px"></li>
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if form1 %}
+                    <form method="POST" enctype="multipart/form-data">
+                        
+                        {% csrf_token %}
+                        {{form1.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="campinggear/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseTwo" >
+                    <h3>Sky Diving Gear</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a> 
+                </div>
+               
+            </div>
+            <div id="collapseTwo" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+
+                    {% if ImagesSky4 %}
+                            <ul>
+                                {% for i in ImagesSky4 %}
+                                    <li style="display:inline-flex"><img src="{{ i.image.url }}" style="width:300px;height:300px"></li>
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if form4 %}
+                    <form method="post" enctype="multipart/form-data">
+                         
+                        {% csrf_token %}
+                        {{form4.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                     
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="skydivinggear/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseThree" >
+                    <h3>Hiking Gear</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a> 
+                </div>
+               
+            </div>
+            <div id="collapseThree" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+                     
+                    {% if ImagesHki2 %}
+                            <ul>
+                                {% for i in ImagesHki2 %}
+                                    <li style="display:inline-flex"><img src="{{ i.image.url }}" style="width:300px;height:300px"></li>
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if form2 %}
+                    <form method="post" enctype="multipart/form-data">
+                         
+                        {% csrf_token %}
+                        {{form2.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="hikinggear/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="text-center">
+                    <a class="btn" data-bs-toggle="collapse" href="#collapseFour" >
+                    <h3>Canoeing Gear</h3>
+                    <!-- <p>Having fun living life the only way it was meant to be lived</p> -->
+                    </a> 
+                </div>
+               
+            </div>
+            <div id="collapseFour" class="collapse show">
+                <div class="card-body">
+                    <!-- <p class="text-center">sonjffgfhgfhdgfhdgfhdggfhdgfhdfghdgfhdgfhdfg</p> -->
+                     
+                    {% if ImagesCan3 %}
+                            <ul>
+                                {% for i in ImagesCan3 %}
+                                    <li style="display:inline-block"><img src="{{ i.image.url }}" style="width:300px;height:300px"></li>
+                                {% endfor %} 
+                            </ul>
+                            
+                    {% endif %}
+                    {% if form3 %}
+                    <form method="post" enctype="multipart/form-data">
+                         
+                        {% csrf_token %}
+                        {{form3.as_p}}
+                        <input type="submit">
+                    </form>
+                    {% endif %}
+                     
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <p class="text-center"><a class="btn btn-primary" href="canoeinggear/">add</a></p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    
+        
+{% endblock %}
